@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Report</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="./jass.css" />
+    <link rel="stylesheet" href="./assets/style.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Weather Dashboard</h1>
+    </header>
+    <div class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh">
+        <div class="col-12 col-md-3 bg-light p-3">
+            <h2 class="text-dark">Search for City:</h2>
+            <form id="search-form" class="mb-2">
+                <input id="search-input" class="form-input w-100" type="text">
+               
+            </form>
+             <button class="btn btn-info btn-block">Search</button>
+             <div class="h4 pb-2 mb-4 text-danger border-bottom border-dark"></div>
+        </div>
+
+
+        <div class="col-12 col-md-9 p-3 text-dark">
+            <div id="result-content"></div>
+        </div> <!--SAVE RESULTS-->
+        
+        <div class="flex-row ali border border-dark">
+            <div id= "place" class="col">
+                <p>place</p>
+            </div>
+            <div class="col">
+                <p>Temp:</p>
+            </div>
+            <div class="col">
+                <p>Wind:</p>
+            </div>
+            <div class="col">
+                <p>Humidity:</p>
+            </div>
+            <div class="col">
+                <p>UV Index:</p>
+            </div>
+        </div>
+    </div>
+  
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/script.js"></script>
+</body>
