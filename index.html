@@ -7,7 +7,7 @@
   <title>Weather Report</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="./jass.css" />
+
     <link rel="stylesheet" href="./assets/style.css" />
 </head>
 
@@ -21,8 +21,8 @@
                 <h2 class="text-dark">Search for City:</h2>
                 <form id="search-form" class="mb-2">
                     <input id="search-input" class="form-input w-100" type="text">
+                    <button class="btn btn-info btn-block">Search</button>
                 </form>
-                <button class="btn btn-info btn-block">Search</button>
                 <div class="h4 pb-2 mb-4 text-danger border-bottom border-dark"></div>
             </div>
 
@@ -31,63 +31,64 @@
             </div> <!--SAVE RESULTS-->
         </div>
 
-        <div class = "col-9">
+        <div id="weather"class = "col-9 me-2">
             <!--CURRENT WEATHER CONTAINER-->
-        <div class="col-9 border border-dark">
+        <div id="today"class="border border-dark">
             <div id= "place" class="col">
                 <p>place</p>
             </div>
-            <div class="col">
+            <div id="temp"class="col">
                 <p>Temp:</p>
             </div>
-            <div class="col">
+            <div id="wind"class="col">
                 <p>Wind:</p>
             </div>
-            <div class="col">
+            <div id="humidity"class="col">
                 <p>Humidity:</p>
             </div>
-            <div class="col">
+            <div id="uv"class="col row">
                 <p>UV Index:</p>
+                <p class="index"></p>
             </div>
         </div>
         <!--5 DAY WEATHER-->
-        <div>
+        <div id="5-day">
             <h2>5-Day Forecast:</h2> 
             <div class = "row">
-                 <div id = "info-box-1" class = "container col me-2">
+                 <div id = "info-box-1" class = "container col me-2 bg-info">
                     <p class="date">3/31/2022</p>
-                    <image alt = "some clouds"></image>
+                    <image class="img" alt = "some clouds"></image>
                     <p class = "temp">place holder</p>
                     <p class = "wind">place holder</p>
                     <p class = "humidity">place holder</p>
                 </div>
-                <div id = "info-box-2" class = "container col me-2">
+                <div id = "info-box-2" class = "container col me-2 bg-info">
                     <p class="date">3/31/2022</p>
-                    <image alt = "some clouds"></image>
-                    <p class = "temp"></p>
-                    <p class = "wind"></p>
-                    <p class = "humidity"></p>
+                    <image class="img" alt = "some clouds"></image>
+                    <p class = "temp">place holder</p>
+                    <p class = "wind">place holder</p>
+                    <p class = "humidity">place holder</p>
                 </div>
-                <div id = "info-box-3" class = "container col me-2">
+                <div id = "info-box-3" class = "container col me-2 bg-info">
                     <p class="date">3/31/2022</p>
-                    <image alt = "some clouds"></image>
-                    <p class = "temp"></p>
-                    <p class = "wind"></p>
-                    <p class = "humidity"></p>
+                    <image class="img"alt = "some clouds"></image>
+                    <p class = "temp">place holder</p>
+                    <p class = "wind">place holder</p>
+                    <p class = "humidity">place holder</p>
                 </div>
-                <div id = "info-box-4"class = "container col me-2">
+                <div id = "info-box-4"class = "container col me-2 bg-info">
                     <p class="date">3/31/2022</p>
-                    <image alt = "some clouds"></image>
-                    <p class = "temp"></p>
-                    <p class = "wind"></p>
-                    <p class = "humidity"></p>
+                    <image class="img"alt = "some clouds"></image>
+                    <p class = "temp">place holder</p>
+                    <p class = "wind">place holder</p>
+                    <p class = "humidity">place holder</p>
                 </div>
-                <div id="info-box-5"class = "container col me-2">
+                <div id="info-box-5"class = "container col me-2 bg-info">
                     <p class="date">3/31/2022</p>
-                    <image alt = "some clouds"></image>
-                    <p class = "temp"></p>
-                    <p class = "wind"></p>
-                    <p class = "humidity"></p>
+                    <image class="img" alt = "some clouds"></image>
+                    <p class = "temp">place holder</p>
+                    <p class = "wind">place holder</p>
+                    <p class = "humidity">place holder</p>
                 </div>
             </div>
       </div>
@@ -98,5 +99,7 @@
 
   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/script.js"></script>
 </body>
