@@ -1,8 +1,7 @@
 let searchEL = $("#search-form")
-function handle_search(e){
-    if (e.preventDefault) e.preventDefault();
-    let data = $("#search-input").val()
-    fetch(`https://nominatim.openstreetmap.org/search.php?q=${data}&format=jsonv2`)
+
+function weatherSearch(search){
+    fetch(`https://nominatim.openstreetmap.org/search.php?q=${search}&format=jsonv2`)
     .then(localtion_data_raw =>{return localtion_data_raw.json()})
     .then(location_data => {
         let lat = location_data[0].lat
@@ -12,12 +11,14 @@ function handle_search(e){
         .then(weather_data=>{
             console.log(weather_data)
             let weatherEL = $("#weather")
+            $("#weather").css({'visibility':'visible'})
             let today = moment()
             let today_weather = $(weatherEL).find("#today")
 
-            //setting todays elements
-            $(today_weather).find("#place").find("p").html(`${data} (${today.format("M/D/Y")})`)
+            //result for today
+            $(today_weather).find("#place").find("p").html(`${search} (${today.format("M/D/Y")})`)
             $(today_weather).find("#temp").find("p").html(`Temp: ${weather_data.current.temp}°F`)
+            $(today_weather).find('.img').attr(`src`,`http://openweathermap.org/img/wn/${weather_data.current.weather[0].icon}.png`)
             $(today_weather).find("#wind").find("p").html(`Wind: ${weather_data.current.wind_speed} MPH`)
             $(today_weather).find("#humidity").find("p").html(`Wind: ${weather_data.current.humidity}%`)
             let indexEL = $(today_weather).find("#uv").find(".index") 
@@ -47,14 +48,40 @@ function handle_search(e){
 
                 $(i).find(".wind").html(`Wind: ${dailyData.wind_speed} MPH`)
 
-                $(i).find(".temp").html(`Temp: ${dailyData.temp.day} F`)
+                $(i).find(".temp").html(`Temp: ${dailyData.temp.day} °F`)
 
                 $(i).find('.img').attr(`src`,`http://openweathermap.org/img/wn/${dailyData.weather[0].icon}.png`)
 
                 $(i).find(".date").html(moment().add(1 + row, 'days').format('MM/DD/YY'))
             })
+
         })
     })
 }
 
+function historyBtn(){ //history buttons
+    let searchHistory = localStorage.history?localStorage.history.split(','):[];
+    let result = $("#result-content")
+    $(result).empty();
+    searchHistory.forEach((search)=>{
+        console.log(search)
+        let child = $("<button>")
+        $(child).html(search)
+        $(child).addClass("btn-info mb-2 w-100")
+        $(child).on("click", ()=>weatherSearch(search))
+        $(result).append(child)
+    })
+}
+
+function handle_search(e){//store searches
+    if (e.preventDefault) e.preventDefault();
+    let data = $("#search-input").val()
+    weatherSearch(data)
+    let searchHistory = localStorage.history?localStorage.history.split(','):[];
+    searchHistory.unshift(data)
+    localStorage.setItem("history", searchHistory);
+    historyBtn()
+}
+
+historyBtn()
 searchEL.on("submit", handle_search)

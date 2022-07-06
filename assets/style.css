@@ -1,9 +1,9 @@
-button {
+.searchB {
     color: aliceblue;
     background-color: #00BFFF;
     margin-top: 15px;
     border-radius: 5px;
-
+ 
 }
 
 body {
@@ -16,6 +16,12 @@ header {
     color: aliceblue;
 }
 
-#info{
-    background-color: blue;
+#place{
+    font-size: xx-large;
 }
+
+#today{
+   padding: 20px;
+   
+}
+
